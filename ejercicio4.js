@@ -65,8 +65,9 @@ define(['N/search', 'N/log', 'N/email', 'N/runtime'], function (search, log, ema
         try {
 
             var sum = 0;            //funcion que hace la suma del precio de las ordenes de venta
-            for (var i=0; i<context.values.length; i++)
-            sum += parseFloat (context.values[i]);
+            for (var i=0; i<context.values.length; i++){
+            sum += parseFloat (context.values[i])
+            };
            
             context.write({         //se introducen en otras llaves para la siguiente fase
                 key: context.key,

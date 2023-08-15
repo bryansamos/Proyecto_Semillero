@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de registro</title>
+</head>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+            background-color:darkseagreen;
+            margin: 0;
+            padding: 0;
+            
+    }
+
+    .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color:beige;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    h2{
+        text-align: center;
+    }
+    label {
+           
+            font-weight: bold;
+        }
+        input[type="text"], input[type="tel"], input[type="email"] {
+            width: 95%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        input[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            
+        }
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+        img {
+            margin-left: 47%;
+        }
+
+
+</style>
+
+
+<body>
+    
+
+    <div class="container">
+        <h2>Bienvenido al formulario para clientes potenciales</h2>
+        <form action="/app/site/hosting/scriptlet.nl?script=16&deploy=1" method="POST">
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" placeholder="Escribe el nombre de tu empresa o tu nombre y apellido" required><br>
+            
+            <label for="telefono">Teléfono:</label>
+            <input type="tel" id="telefono" name="telefono" placeholder="Escribe un teléfono de contacto de 10 dígitos" required><br>
+            
+            <label for="email">Correo Electrónico:</label>
+            <input type="email" id="email" name="email" placeholder="Introduce un correo electrónico " required><br>
+            
+            <input type="submit" value="Registrarse">
+        </form>
+    </div>
+
+    <div>
+        <img src="https://media.licdn.com/dms/image/D560BAQGJt3xuKaUeGQ/company-logo_200_200/0/1688454390774?e=1700092800&v=beta&t=HDdnosi6dZTCr2TgI-_LVriROkQFx1Z8AIPbYvwQmS8" alt="Sol4IT" width="100">
+    </div>
+
+    
+    
+</body>
+</html>
