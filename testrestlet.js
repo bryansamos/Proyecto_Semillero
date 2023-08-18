@@ -5,48 +5,49 @@
  */
 define(["N/record"], function (record) {
   function _post(context) {
-    const response = { code: 400, success: false, data: [], error: [] };
+    const response = { code: 500, success: false, data: [], error: [] };
     try {
-      log.debug("intizializing creating a contact", context); //Un mensaje de consola para comprobar si entra la función al enviar el POST en Postman
-      const data = context.data;
+      
+    
 
       let newSalesOrder = record.create({
-        //Utilizamos el módulo record con su método .create, que nos permitirá crear un registro
+        //Se crea un registro que en este ejercicio es una orden de venta
         type: "salesorder",
         isDynamic: true,
       });
-      //A continuación rellenamos los campos del registro con los valores que escribirimos en al body del Postman
+      //Se establecen los los campos a llenar
       newSalesOrder.setValue({
-        fieldId: "entity",
+        fieldId: "entity",          //entidad que es el nombre de la empresa
         value: context.entity
       });
 
-      context.items.forEach((i) => {
+      context.items.forEach((i) => {                //bucle para colocar las lineas del articulo de inventario
         newSalesOrder.selectNewLine({ sublistId: "item" });
         newSalesOrder.setCurrentSublistValue({
           sublistId: "item",
           fieldId: "item",
-          value: i.itemId,
-        }); // value: i.itemId
+          value: i.itemId,    // ID del articulo, que en este caso es un numero
+        }); 
         newSalesOrder.setCurrentSublistValue({
           sublistId: "item",
           fieldId: "quantity",
-          value: i.quantity,
-        }); // value: i.quantity
+          value: i.quantity,  // numero de articulos a ingresar
+        }); 
         newSalesOrder.commitLine({ sublistId: "item" });
       });
 
       const saveSalesOrder = newSalesOrder.save();
 
-      response.data.push({
-        //Con el método push mandamos lo que quedó guardado en la variable saveContact
+      const data = context.data;    //genera el id de la orden de venta
+     response.data.push({
+        
         id: saveSalesOrder,
         saved: data,
-      });
-      response.code = 201; //Este código significa Created
+      }); 
+      response.code = 200; //la orden de venta se pudo crear
       response.success = true;
     } catch (e) {
-      response.code = 500;
+      response.code = 500;  //error durante la creacion
       response.error.push(e.message);
       response.success = false;
     } finally {
